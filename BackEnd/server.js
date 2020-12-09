@@ -16,8 +16,8 @@ app.use(function (req, res, next) {
     next();
 });
 
-
-app.use(express.static(path.join(__dirname, '../buiild')));
+// read from build folder
+app.use(express.static(path.join(__dirname, '../build')));
 app.use('/static', express.static(path.join(__dirname, 'build//static')));
 
 // parse application/x-www-form-urlencoded
@@ -94,7 +94,7 @@ app.post('/api/movies', (req, res) => {
 
     res.send('Data Recieved!');
 })
-
+// handles reqs hat dont match
 app.get('*', (req,res) =>{
     res.sendFile(path.join(__dirname+'/../build/index.html'));
     });
